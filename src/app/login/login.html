@@ -1,2 +1,36 @@
-<button class="back" name="saveBUttin" (click)="increment()">Submit</button>
-<!-- {{counter>20?'Greater than 20':'Less than 20'}} -->
+<form [formGroup]="userIdForm" (ngSubmit)="onGenerateOtp()" class="login-form">
+   <h2 class="login-title">Voter Portal Access</h2>
+    <mat-form-field appearance="fill" class="full-width">
+    <mat-label>User ID (Email)</mat-label>
+    <input matInput formControlName="userId" type="email" required />
+    <mat-error *ngIf="submittedUserId && userIdForm.controls['userId'].invalid">
+      Please enter a valid email address.
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" class="full-width">Generate OTP</button>
+</form>
+
+
+<!-- <form *ngIf="step === 1" [formGroup]="userIdForm" (ngSubmit)="onGenerateOtp()" class="login-form">
+  <h2 class="login-title">Voter Portal Access</h2>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>User ID (Email)</mat-label>
+    <input matInput formControlName="userId" type="email" required />
+    <mat-error *ngIf="submittedUserId && userIdForm.controls['userId'].invalid">
+      Please enter a valid email address.
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" class="full-width">Generate OTP</button>
+</form>
+
+<form *ngIf="step === 2" [formGroup]="otpForm" (ngSubmit)="onLogin()" class="login-form">
+  <h2 class="login-title">Enter OTP</h2>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>OTP</mat-label>
+    <input matInput formControlName="otp" type="text" maxlength="6" required />
+    <mat-error *ngIf="submittedOtp && otpForm.controls['otp'].invalid">
+      OTP is required and must be 4-6 digits.
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" class="full-width">Login</button>
+</form> -->
